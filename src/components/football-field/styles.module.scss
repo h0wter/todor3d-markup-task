@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+
+  @media (max-width: 375px) {
+    transform: rotate(90deg);
+  }
+}

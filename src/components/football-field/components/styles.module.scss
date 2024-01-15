@@ -1,0 +1,124 @@
+@import "src/assets/css/vars.scss";
+
+$desktop-circle-diameter-width: 140;
+$desktop-circle-diameter: $desktop-circle-diameter-width + px;
+$desktop-half-circle-diameter: calc($desktop-circle-diameter-width / 2) + px;
+$mobile-circle-diameter-width: 80;
+$mobile-circle-diameter: $mobile-circle-diameter-width + px;
+$mobile-half-circle-diameter: calc($mobile-circle-diameter-width / 2) + px;
+
+$default-thickness: 2;
+$half-thickness: calc($default-thickness / 2) + px;
+$thickness: $default-thickness + px;
+
+$desktop-penalty-box-width: 100px;
+$mobile-penalty-box-width: 58px;
+
+.field {
+  position: relative;
+  width: 478px;
+  height: 540px;
+  border-radius: 8px 0 0 8px;
+  border: $thickness solid $stroke;
+  border-right-width: $half-thickness;
+
+  @media (max-width: 375px) {
+    width: 265px;
+    height: 312px;
+  }
+}
+
+.centerCircle {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translate(-100%, -50%);
+
+  width: $desktop-half-circle-diameter;
+  height: $desktop-circle-diameter;
+
+  border-radius: 100% 0 0 100%/50% 0 0 50%;
+  border: $thickness solid $stroke;
+  border-right: none;
+
+  @media (max-width: 375px) {
+    width: $mobile-half-circle-diameter;
+    height: $mobile-circle-diameter;
+  }
+}
+
+.goalBox {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 135px;
+
+  border: $thickness solid $stroke;
+  border-left: none;
+
+  @media (max-width: 375px) {
+    width: 28px;
+    height: 78px;
+  }
+}
+
+.penaltyBox {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: $desktop-penalty-box-width;
+  height: 270px;
+
+  border: $thickness solid $stroke;
+  border-left: none;
+
+  @media (max-width: 375px) {
+    width: $mobile-penalty-box-width;
+    height: 156px;
+  }
+}
+
+.penaltyArc {
+  position: absolute;
+  left: $desktop-penalty-box-width;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: $desktop-half-circle-diameter;
+  height: $desktop-circle-diameter;
+
+  border-radius: 0 100% 100% 0/0 50% 50% 0;
+  border: $thickness solid $stroke;
+
+  @media (max-width: 375px) {
+    left: $mobile-penalty-box-width;
+
+    width: $mobile-half-circle-diameter;
+    height: $mobile-circle-diameter;
+  }
+}
+
+.penaltySpot {
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+  border: $half-thickness solid $stroke;
+
+  @media (max-width: 375px) {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
