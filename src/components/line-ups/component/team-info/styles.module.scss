@@ -1,0 +1,53 @@
+@import "src/assets/css/vars.scss";
+
+.teamWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+  border: $half-thickness solid $stroke;
+}
+
+.teamLogo {
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+}
+
+.teamName {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.57143;
+
+  color: $white;
+}
+
+.formationWrapper {
+  padding: 3px 16px;
+
+  border-radius: 24px;
+  border: $half-thickness solid $stroke;
+}
+
+.formation {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: $white;
+}
+
+.rightToLeftDirection {
+  direction: rtl;
+}

@@ -1,7 +1,7 @@
-import { FootballField } from "./components/football-field/football-field.tsx";
+import { LineUps } from "./components/line-ups/line-ups.tsx";
 
 function App() {
-  return <FootballField />;
+  return <LineUps />;
 }
 
 export default App;
