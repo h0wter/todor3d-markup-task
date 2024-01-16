@@ -1,8 +1,11 @@
-import { type Team } from "../football-field/types.ts";
+import { Team } from "../../types";
 
 const firstTeam: Team = {
   name: "Manchester City",
-  coach: "Josep Guardiola",
+  coach: {
+    name: "Josep Guardiola",
+    imgUrl: "/src/assets/images/players/kevin-de-bruyne.png",
+  },
   imgUrl: "/src/assets/images/teams/manchester-city.png",
   formation: "4-3-3/1",
   players: [
@@ -55,7 +58,10 @@ const firstTeam: Team = {
 
 const secondTeam: Team = {
   name: "Liverpool",
-  coach: "Jurgen Klopp",
+  coach: {
+    name: "Jurgen Klopp",
+    imgUrl: "/src/assets/images/players/virgil-van-dijk.png",
+  },
   imgUrl: "/src/assets/images/teams/liverpool.png",
   formation: "4-3-3/2",
   players: [

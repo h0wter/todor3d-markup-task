@@ -28,3 +28,19 @@
 
   color: $text-main;
 }
+
+.coachesWrapper {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+
+  margin-top: 16px;
+}
+
+.coachLabel {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33333;
+
+  color: $white;
+}
