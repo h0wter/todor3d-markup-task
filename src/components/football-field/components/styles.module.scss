@@ -7,16 +7,12 @@ $mobile-circle-diameter-width: 80;
 $mobile-circle-diameter: $mobile-circle-diameter-width + px;
 $mobile-half-circle-diameter: calc($mobile-circle-diameter-width / 2) + px;
 
-$default-thickness: 2;
-$half-thickness: calc($default-thickness / 2) + px;
-$thickness: $default-thickness + px;
-
 $desktop-penalty-box-width: 100px;
 $mobile-penalty-box-width: 58px;
 
 .field {
   position: relative;
-  width: 478px;
+  width: 461px;
   height: 540px;
   border-radius: 8px 0 0 8px;
   border: $thickness solid $stroke;
@@ -83,7 +79,7 @@ $mobile-penalty-box-width: 58px;
 
 .penaltyArc {
   position: absolute;
-  left: $desktop-penalty-box-width;
+  left: calc($desktop-penalty-box-width - $thickness);
   top: 50%;
   transform: translateY(-50%);
 
@@ -94,7 +90,7 @@ $mobile-penalty-box-width: 58px;
   border: $thickness solid $stroke;
 
   @media (max-width: 375px) {
-    left: $mobile-penalty-box-width;
+    left: calc($mobile-penalty-box-width - $thickness);
 
     width: $mobile-half-circle-diameter;
     height: $mobile-circle-diameter;
@@ -121,4 +117,30 @@ $mobile-penalty-box-width: 58px;
 
 .rotated {
   transform: rotate(180deg);
+}
+
+.player {
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  background-color: $black;
+
+  &[data-isright] {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+
+  @media (max-width: 375px) {
+    width: 32px;
+    height: 32px;
+
+    transform: translate(-50%, -50%) rotate(-90deg);
+
+    &[data-isright] {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
 }
