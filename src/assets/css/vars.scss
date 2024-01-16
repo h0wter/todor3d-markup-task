@@ -1,1 +1,10 @@
 $stroke: #413d42;
+$black: #110c13;
+$black-half-transparent: rgba($black, 0.5);
+$white: #ffffff;
+$background: #221d24;
+$text-main: rgba(245, 245, 246, 0.87);
+
+$default-thickness: 2;
+$half-thickness: calc($default-thickness / 2) + px;
+$thickness: $default-thickness + px;
