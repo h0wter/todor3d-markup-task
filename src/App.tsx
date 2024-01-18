@@ -1,6 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-import { LineUps } from "./components/line-ups/line-ups.tsx";
 import debounce from "lodash.debounce";
+import { LineUps } from "./components/line-ups/line-ups.tsx";
+import { TogglePage } from "./components/toggle-page/toggle-page.tsx";
+import { LeaguesList } from "./components/leagues-list/leagues-list.tsx";
+import { Page } from "./types";
 
 const MOBILE_BREAKPOINT = 375;
 
@@ -18,6 +21,7 @@ const checkIsMobile = (width: number): boolean => width <= MOBILE_BREAKPOINT;
 
 function App() {
   const [isMobile, setIsMobile] = useState(checkIsMobile(window.innerWidth));
+  const [activePage, setActivePage] = useState<Page>("field");
 
   useEffect(() => {
     const handleResize = debounce(
@@ -32,13 +36,16 @@ function App() {
     };
   }, []);
 
+  const handlePageChange = (page: Page) => () => setActivePage(page);
+
   return (
     <DeviceContext.Provider
       value={{
         isMobile,
       }}
     >
-      <LineUps />
+      <TogglePage onPageChange={handlePageChange} />
+      {activePage === "field" ? <LineUps /> : <LeaguesList />}
     </DeviceContext.Provider>
   );
 }
