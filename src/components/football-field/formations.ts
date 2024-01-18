@@ -57,7 +57,7 @@ const formations: Formation = {
   "4-3-3/2": [
     {
       top: "50%",
-      left: "11.3%",
+      left: "11%",
     },
     {
       top: "20.7%",

@@ -1,9 +1,14 @@
-.container {
+.fieldContainer {
   display: flex;
 
   padding-top: 24px;
 
   @media (max-width: 375px) {
+    height: 531px;
+    align-items: end;
+    padding-top: 0;
     transform: rotate(90deg);
+
+    margin-bottom: 8px;
   }
 }
