@@ -5,17 +5,26 @@ type Props = {
   name: string;
   imgUrl: string;
   rightToLeftDirection?: boolean;
+  isMobile?: boolean;
 };
 
-const CoachLabel = ({ name, imgUrl, rightToLeftDirection = false }: Props) => {
+const CoachLabel = ({
+  name,
+  imgUrl,
+  rightToLeftDirection = false,
+  isMobile = false,
+}: Props) => {
   return (
     <div
       className={getValidClassNames(
-        styles.container,
+        styles.coachContainer,
         rightToLeftDirection && styles.rightToLeftDirection
       )}
     >
-      <p className={styles.coachName}>{name}</p>
+      <div className={styles.coachWrapper}>
+        {isMobile && <p>Coach: </p>}
+        <p className={styles.coachName}>{name}</p>
+      </div>
       <img className={styles.coachImg} src={imgUrl} alt={name} />
     </div>
   );
