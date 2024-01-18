@@ -4,6 +4,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @media (max-width: 375px) {
+    &:first-child {
+      margin-bottom: 12px;
+    }
+  }
 }
 
 .logoWrapper {
@@ -38,6 +44,10 @@
 
   border-radius: 24px;
   border: $half-thickness solid $stroke;
+
+  @media (max-width: 375px) {
+    padding: 0px 11px;
+  }
 }
 
 .formation {
@@ -46,6 +56,12 @@
   line-height: 1.5;
 
   color: $white;
+  direction: ltr;
+
+  @media (max-width: 375px) {
+    font-size: 14px;
+    line-height: 1.57143;
+  }
 }
 
 .rightToLeftDirection {

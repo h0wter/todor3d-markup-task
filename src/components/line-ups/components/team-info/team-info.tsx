@@ -1,5 +1,5 @@
 import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
-import { Team } from "../../../football-field/types.ts";
+import { Team } from "../../../../types";
 import { getValidFormationName } from "../../helpers/get-valid-formation-name.helper.ts";
 import styles from "./styles.module.scss";
 
