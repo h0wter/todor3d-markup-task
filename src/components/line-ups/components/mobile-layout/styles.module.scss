@@ -1,0 +1,10 @@
+.matchWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  @media (max-width: 375px) {
+    align-items: start;
+    width: 343px;
+  }
+}
