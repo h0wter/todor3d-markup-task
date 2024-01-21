@@ -1,6 +1,6 @@
 import { getValidClassNames } from "../../../helpers/get-valid-class-names.helper.ts";
-import { Team } from "../types.ts";
 import { formations } from "../formations.ts";
+import { type Team } from "../../../types";
 import styles from "./styles.module.scss";
 
 type Props = {
