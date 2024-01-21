@@ -43,7 +43,7 @@ const LeaguesList = () => {
     },
     [expandedLeagues]
   );
-  console.log(isAllLeaguesExpanded);
+
   return (
     <div className={styles.leaguesListContainer}>
       <div className={styles.titleWrapper} onClick={handleAllLeaguesToggle}>
