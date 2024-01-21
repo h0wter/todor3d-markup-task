@@ -12,6 +12,14 @@
 
   margin-bottom: 16px;
   padding-right: 16px;
+
+  cursor: pointer;
+}
+
+.inputWrapper {
+  position: relative;
+
+  margin-bottom: 24px;
 }
 
 .searchLeagueInput {
@@ -20,9 +28,102 @@
   font-weight: 400;
   line-height: 1.5;
 
-  padding: 8px 20px;
+  padding: 8px 17px 8px 44px;
   background-color: $black;
   border-radius: 24px;
   border: 1px solid $stroke;
   outline: none;
+}
+
+.searchIcon {
+  position: absolute;
+
+  top: 12px;
+  left: 17px;
+}
+
+.leaguesListWrapper {
+  padding-left: 32px;
+
+  overflow-y: scroll;
+  direction: rtl;
+}
+
+.leaguesList {
+  list-style: none;
+  height: 750px;
+  direction: ltr;
+}
+
+.leagueItem {
+  &:not(:last-child) {
+    margin-bottom: 32px;
+  }
+}
+
+.leagueLabelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 16px;
+
+  cursor: pointer;
+}
+
+.leagueIcon {
+  width: 24px;
+  height: 24px;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.leagueName {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33333;
+  color: $white-main;
+}
+
+.caretIcon {
+  margin-left: auto;
+}
+
+.expanded {
+  color: $text-main;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.expandedList {
+  padding-left: 12px;
+  list-style: none;
+}
+
+.expandedListItem {
+  display: flex;
+  gap: 8px;
+
+  padding-left: 30px;
+
+  border-left: 1px solid $stroke;
+
+  &:not(:first-child) {
+    padding-top: 12px;
+  }
+
+  &:not(:last-child) {
+    padding-bottom: 12px;
+  }
+}
+
+.expandedListItemTitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: $white-main;
 }
