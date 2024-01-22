@@ -1,57 +1,62 @@
-import { Team } from "../../types";
+import kevinDeBruyneImg from "../../assets/images/players/kevin-de-bruyne.png";
+import alissonBeckerImg from "../../assets/images/players/alisson-becker.png";
+import virgilVanDijkImg from "../../assets/images/players/virgil-van-dijk.png";
+import manchesterCityLogo from "../../assets/images/teams/manchester-city.png";
+import liverpoolLogo from "../../assets/images/teams/liverpool.png";
+import { type Team } from "../../types";
 
 const firstTeam: Team = {
   name: "Manchester City",
   coach: {
     name: "Josep Guardiola",
-    imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+    imgUrl: kevinDeBruyneImg,
   },
-  imgUrl: "../../assets/images/teams/manchester-city.png",
+  imgUrl: manchesterCityLogo,
   formation: "4-3-3/1",
   players: [
     {
       name: "Alisson Becker",
-      imgUrl: "../../assets/images/players/alisson-becker.png",
+      imgUrl: alissonBeckerImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
     {
       name: "Kevin De Bruyne",
-      imgUrl: "../../assets/images/players/kevin-de-bruyne.png",
+      imgUrl: kevinDeBruyneImg,
     },
   ],
 };
@@ -60,54 +65,54 @@ const secondTeam: Team = {
   name: "Liverpool",
   coach: {
     name: "Jurgen Klopp",
-    imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+    imgUrl: virgilVanDijkImg,
   },
-  imgUrl: "../../assets/images/teams/liverpool.png",
+  imgUrl: liverpoolLogo,
   formation: "4-3-3/2",
   players: [
     {
       name: "Alisson Becker",
-      imgUrl: "../../assets/images/players/alisson-becker.png",
+      imgUrl: alissonBeckerImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
     {
       name: "Virgil van Dijk",
-      imgUrl: "../../assets/images/players/virgil-van-dijk.png",
+      imgUrl: virgilVanDijkImg,
     },
   ],
 };
