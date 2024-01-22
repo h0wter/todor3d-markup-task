@@ -1,9 +1,11 @@
+@import "src/assets/css/vars.scss";
+
 .coachContainer {
   display: flex;
   align-items: center;
   gap: 8px;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     &:nth-child(2) {
       margin-bottom: 8px;
     }
@@ -28,7 +30,7 @@
   line-height: 1.5;
   color: rgba(245, 245, 246, 0.87);
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     font-size: 14px;
     line-height: 1.57143;
   }
@@ -40,7 +42,7 @@
 
   border-radius: 50%;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     width: 32px;
     height: 32px;
   }

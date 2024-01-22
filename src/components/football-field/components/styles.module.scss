@@ -18,7 +18,7 @@ $mobile-penalty-box-width: 58px;
   border: $thickness solid $stroke;
   border-right-width: $half-thickness;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     width: 265px;
     height: 312px;
   }
@@ -37,7 +37,7 @@ $mobile-penalty-box-width: 58px;
   border: $thickness solid $stroke;
   border-right: none;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     width: $mobile-half-circle-diameter;
     height: $mobile-circle-diameter;
   }
@@ -54,7 +54,7 @@ $mobile-penalty-box-width: 58px;
   border: $thickness solid $stroke;
   border-left: none;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     width: 28px;
     height: 78px;
   }
@@ -71,7 +71,7 @@ $mobile-penalty-box-width: 58px;
   border: $thickness solid $stroke;
   border-left: none;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     width: $mobile-penalty-box-width;
     height: 156px;
   }
@@ -89,7 +89,7 @@ $mobile-penalty-box-width: 58px;
   border-radius: 0 100% 100% 0/0 50% 50% 0;
   border: $thickness solid $stroke;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     left: calc($mobile-penalty-box-width - $thickness);
 
     width: $mobile-half-circle-diameter;
@@ -109,7 +109,7 @@ $mobile-penalty-box-width: 58px;
   border-radius: 50%;
   border: $half-thickness solid $stroke;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     width: 4px;
     height: 4px;
   }
@@ -133,7 +133,7 @@ $mobile-penalty-box-width: 58px;
     transform: translate(-50%, -50%) rotate(180deg);
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     width: 32px;
     height: 32px;
 

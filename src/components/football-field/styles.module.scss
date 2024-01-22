@@ -1,9 +1,11 @@
+@import "src/assets/css/vars.scss";
+
 .fieldContainer {
   display: flex;
 
   padding-top: 24px;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     height: 531px;
     align-items: end;
     padding-top: 0;

@@ -1,9 +1,11 @@
+@import "src/assets/css/vars.scss";
+
 .matchWrapper {
   display: flex;
   flex-direction: column;
   padding: 16px;
 
-  @media (max-width: 375px) {
+  @media (max-width: $desktop-width) {
     align-items: start;
     width: 343px;
   }
