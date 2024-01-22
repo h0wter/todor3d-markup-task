@@ -50,7 +50,8 @@ const LeaguesList = () => {
         <h2>All Leagues</h2>
         <CaretRightIcon
           className={getValidClassNames(
-            !isAllLeaguesExpanded && styles.rotated
+            styles.caretIcon,
+            !isAllLeaguesExpanded && styles.expandedIcon
           )}
         />
       </div>
@@ -96,7 +97,7 @@ const LeaguesList = () => {
                       <CaretRightIcon
                         className={getValidClassNames(
                           styles.caretIcon,
-                          !expandedLeagues[name] && styles.rotated
+                          !expandedLeagues[name] && styles.expandedIcon
                         )}
                       />
                     </div>
