@@ -5,15 +5,11 @@
   flex-direction: column;
   align-items: center;
 
-  width: 954px;
-  height: 100%;
+  width: 100%;
+  padding: 16px;
 
   background-color: $background;
-
-  @media (max-width: $desktop-width) {
-    width: 343px;
-    overflow: hidden;
-  }
+  border-radius: 8px;
 }
 
 .lineUpsWrapper {

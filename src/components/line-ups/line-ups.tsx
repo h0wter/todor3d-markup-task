@@ -1,7 +1,7 @@
-import styles from "./styles.module.scss";
+import { useDeviceContext } from "../../hooks/context/use-device-context.hook.ts";
 import { DesktopLayout } from "./components/desktop-layout/desktop-layout.tsx";
 import { MobileLayout } from "./components/mobile-layout/mobile-layout.tsx";
-import { useDeviceContext } from "../../hooks/context/use-device-context.hook.ts";
+import styles from "./styles.module.scss";
 
 const LineUps = () => {
   const { isMobile } = useDeviceContext();

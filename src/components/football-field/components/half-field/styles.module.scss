@@ -1,26 +1,25 @@
 @import "src/assets/css/vars.scss";
 
-$desktop-circle-diameter-width: 140;
-$desktop-circle-diameter: $desktop-circle-diameter-width + px;
-$desktop-half-circle-diameter: calc($desktop-circle-diameter-width / 2) + px;
-$mobile-circle-diameter-width: 80;
-$mobile-circle-diameter: $mobile-circle-diameter-width + px;
-$mobile-half-circle-diameter: calc($mobile-circle-diameter-width / 2) + px;
+.halfFieldWrapper {
+  width: 50%;
 
-$desktop-penalty-box-width: 100px;
-$mobile-penalty-box-width: 58px;
+  @media (max-width: $desktop-width) {
+    width: 100%;
+  }
+}
 
-.field {
+.halfField {
   position: relative;
-  width: 461px;
-  height: 540px;
+  aspect-ratio: 461/540;
   border-radius: 8px 0 0 8px;
   border: $thickness solid $stroke;
   border-right-width: $half-thickness;
 
   @media (max-width: $desktop-width) {
-    width: 265px;
-    height: 312px;
+    aspect-ratio: 312/266;
+    border-radius: 8px 8px 0 0;
+    border-right-width: $thickness;
+    border-bottom-width: $half-thickness;
   }
 }
 
@@ -30,16 +29,24 @@ $mobile-penalty-box-width: 58px;
   top: 50%;
   transform: translate(-100%, -50%);
 
-  width: $desktop-half-circle-diameter;
-  height: $desktop-circle-diameter;
+  height: 25.92%;
+  aspect-ratio: 1/2;
 
   border-radius: 100% 0 0 100%/50% 0 0 50%;
   border: $thickness solid $stroke;
   border-right: none;
 
   @media (max-width: $desktop-width) {
-    width: $mobile-half-circle-diameter;
-    height: $mobile-circle-diameter;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+
+    height: 15.24%;
+    aspect-ratio: 2/1;
+
+    border-radius: 0 0 50% 50%/0 0 100% 100%;
+    border: $thickness solid $stroke;
+    border-top: none;
   }
 }
 
@@ -48,15 +55,22 @@ $mobile-penalty-box-width: 58px;
   top: 50%;
   transform: translateY(-50%);
 
-  width: 50px;
-  height: 135px;
+  width: 10.846%;
+  height: 25%;
 
   border: $thickness solid $stroke;
   border-left: none;
 
   @media (max-width: $desktop-width) {
-    width: 28px;
-    height: 78px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    width: 25%;
+    height: 10.85%;
+
+    border: $thickness solid $stroke;
+    border-top: none;
   }
 }
 
@@ -65,35 +79,50 @@ $mobile-penalty-box-width: 58px;
   top: 50%;
   transform: translateY(-50%);
 
-  width: $desktop-penalty-box-width;
-  height: 270px;
+  height: 50%;
+  aspect-ratio: 101/270;
 
   border: $thickness solid $stroke;
   border-left: none;
 
   @media (max-width: $desktop-width) {
-    width: $mobile-penalty-box-width;
-    height: 156px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    width: 50%;
+    height: 21.7%;
+
+    border: $thickness solid $stroke;
+    border-top: none;
   }
 }
 
 .penaltyArc {
   position: absolute;
-  left: calc($desktop-penalty-box-width - $thickness);
+  left: 100%;
   top: 50%;
   transform: translateY(-50%);
 
-  width: $desktop-half-circle-diameter;
-  height: $desktop-circle-diameter;
+  height: 51.85%;
+  aspect-ratio: 1/2;
 
   border-radius: 0 100% 100% 0/0 50% 50% 0;
   border: $thickness solid $stroke;
+  border-left: none;
 
   @media (max-width: $desktop-width) {
-    left: calc($mobile-penalty-box-width - $thickness);
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
 
-    width: $mobile-half-circle-diameter;
-    height: $mobile-circle-diameter;
+    width: 50%;
+    height: auto;
+    aspect-ratio: 2/1;
+
+    border-radius: 0 0 50% 50%/0 0 100% 100%;
+    border: $thickness solid $stroke;
+    border-top: none;
   }
 }
 
@@ -103,15 +132,21 @@ $mobile-penalty-box-width: 58px;
   top: 50%;
   transform: translate(-50%, -50%);
 
-  width: 8px;
-  height: 8px;
+  height: 3%;
+  aspect-ratio: 1/1;
 
   border-radius: 50%;
-  border: $half-thickness solid $stroke;
+  border: $thickness solid $stroke;
+
+  @media (max-width: 480px) {
+    border-width: $half-thickness;
+  }
 
   @media (max-width: $desktop-width) {
-    width: 4px;
-    height: 4px;
+    left: 50%;
+    top: 75%;
+
+    height: 8%;
   }
 }
 
@@ -121,10 +156,11 @@ $mobile-penalty-box-width: 58px;
 
 .player {
   position: absolute;
+  z-index: 1;
   transform: translate(-50%, -50%);
 
-  width: 40px;
-  height: 40px;
+  height: 7.4%;
+  aspect-ratio: 1/1;
 
   border-radius: 50%;
   background-color: $black;
@@ -134,13 +170,6 @@ $mobile-penalty-box-width: 58px;
   }
 
   @media (max-width: $desktop-width) {
-    width: 32px;
-    height: 32px;
-
-    transform: translate(-50%, -50%) rotate(-90deg);
-
-    &[data-isright] {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
+    height: 10.3%;
   }
 }

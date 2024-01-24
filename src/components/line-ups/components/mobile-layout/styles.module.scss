@@ -4,9 +4,6 @@
   display: flex;
   flex-direction: column;
   padding: 16px;
-
-  @media (max-width: $desktop-width) {
-    align-items: start;
-    width: 343px;
-  }
+  align-items: start;
+  width: 100%;
 }

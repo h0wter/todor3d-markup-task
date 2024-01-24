@@ -2,15 +2,12 @@
 
 .fieldContainer {
   display: flex;
-
+  width: 100%;
   padding-top: 24px;
 
   @media (max-width: $desktop-width) {
-    height: 531px;
-    align-items: end;
+    flex-direction: column;
     padding-top: 0;
-    transform: rotate(90deg);
-
     margin-bottom: 8px;
   }
 }

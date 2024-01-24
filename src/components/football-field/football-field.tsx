@@ -1,4 +1,4 @@
-import { HalfField } from "./components/half-field.tsx";
+import { HalfField } from "./components/half-field/half-field.tsx";
 import { Team } from "../../types";
 import styles from "./styles.module.scss";
 
