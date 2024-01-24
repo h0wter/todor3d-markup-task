@@ -5,7 +5,7 @@ import { TogglePage } from "./components/toggle-page/toggle-page.tsx";
 import { LeaguesList } from "./components/leagues-list/leagues-list.tsx";
 import { Page } from "./types";
 
-const DESKTOP_WIDTH = 1440;
+const DESKTOP_WIDTH = 768;
 
 type DeviceContext = {
   isMobile: boolean;
