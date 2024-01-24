@@ -1,5 +1,5 @@
 import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
-import { formations } from "../../formations.ts";
+import { formations as rawFormations } from "../../formations.ts";
 import { type Team } from "../../../../types/index.ts";
 import { useDeviceContext } from "../../../../hooks/context/use-device-context.hook.ts";
 import styles from "./styles.module.scss";
@@ -27,6 +27,8 @@ const getPositionProperty = (
 const HalfField = ({ team, isRight = false }: Props) => {
   const { formation, players } = team;
   const { isMobile } = useDeviceContext();
+
+  const formations = isMobile ? rawFormations.mobile : rawFormations.desktop;
 
   return (
     <div
