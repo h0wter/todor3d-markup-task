@@ -1,6 +1,5 @@
 import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
 import { useDeviceContext } from "../../../../hooks/context/use-device-context.hook.ts";
-import kevinDeBruyneImg from "../../../../assets/images/players/kevin-de-bruyne.png";
 import { type Team } from "../../../../types";
 import { type CssPosition } from "../../../line-ups/types/css-position.type.ts";
 import styles from "./styles.module.scss";
@@ -50,7 +49,7 @@ const HalfField = ({ team, positions, isRight = false }: Props) => {
           <img
             key={idx}
             className={styles.player}
-            src={kevinDeBruyneImg}
+            src={`https://media.api-sports.io/football/players/${player.id}.png`}
             title={player.name}
             {...(isRight && { "data-isright": true })}
             style={{

@@ -59,7 +59,7 @@ const createPlayersGrid = (lineUp: LineUp) => {
     const teamCols = team.formation.split("-").length;
     const colGap =
       (LAST_COLUMN_POSITION - FIRST_COLUMN_POSITION) / (teamCols - 1);
-    console.log(colGap);
+
     const gridToCssPositionMap: { [name: string]: CssPosition } = {};
 
     const playersPerColumn = countPlayersByColumns(team.startXI);
