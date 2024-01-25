@@ -2,8 +2,14 @@ import { LineUp } from "../../../types/line-up.type";
 import { type StartPlayer } from "../../../types";
 import { type CssPosition } from "../types/css-position.type.ts";
 
-const FIRST_COLUMN_POSITION = 10;
+const KEEPER_COLUMN_POSITION = 10;
+const MIDDLE_COLUMN_POSITION = 50;
+
+const FIRST_COLUMN_POSITION = 22;
 const LAST_COLUMN_POSITION = 85;
+
+const FIRST_ROW_POSITION = 10;
+const LAST_ROW_POSITION = 85;
 
 const DEFAULT_GAP = 18;
 
@@ -35,7 +41,7 @@ const countPlayersByColumns = (players: StartPlayer[]) => {
   for (const key in playersPerRow) {
     const playersInRow = playersPerRow[key].players;
     const rowGap =
-      (LAST_COLUMN_POSITION - FIRST_COLUMN_POSITION) / (playersInRow - 1);
+      (LAST_ROW_POSITION - FIRST_ROW_POSITION) / (playersInRow - 1);
     const minGap = Math.min(rowGap, DEFAULT_GAP);
     const firstRowPosition = (100 - minGap * (playersInRow - 1)) / 2;
 
@@ -50,10 +56,10 @@ const createPlayersGrid = (lineUp: LineUp) => {
   const lineUpPositions = [];
 
   for (const team of lineUp) {
-    const teamCols = team.formation.split("-").length + 1;
+    const teamCols = team.formation.split("-").length;
     const colGap =
       (LAST_COLUMN_POSITION - FIRST_COLUMN_POSITION) / (teamCols - 1);
-
+    console.log(colGap);
     const gridToCssPositionMap: { [name: string]: CssPosition } = {};
 
     const playersPerColumn = countPlayersByColumns(team.startXI);
@@ -62,10 +68,14 @@ const createPlayersGrid = (lineUp: LineUp) => {
       const position = player.grid.split(":");
       const column = Number(position[0]) - 1;
       const row = Number(position[1]) - 1;
-      const playerPositionLeft = colGap * column + FIRST_COLUMN_POSITION;
+
+      const playerPositionLeft =
+        column === 0
+          ? KEEPER_COLUMN_POSITION
+          : colGap * (column - 1) + FIRST_COLUMN_POSITION;
       const playerPositionTop =
         playersPerColumn[column].players === 1
-          ? 50
+          ? MIDDLE_COLUMN_POSITION
           : playersPerColumn[column].gap * row +
             playersPerColumn[column].firstRowPosition;
 

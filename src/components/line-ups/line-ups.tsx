@@ -29,7 +29,8 @@ const LineUps = () => {
             src="https://media.api-sports.io/football/teams/463.png"
             alt="Colon Santa Fe"
           />
-          <span>Aldosivi - </span>
+          <span>Aldosivi</span>
+          <span> - </span>
           <img
             className={styles.teamLogo}
             src="https://media.api-sports.io/football/teams/442.png"
@@ -43,7 +44,8 @@ const LineUps = () => {
             src="https://media.api-sports.io/football/teams/1065.png"
             alt="Colon Santa Fe"
           />
-          <span>Central Cordoba de Santiago - </span>
+          <span>Central Cordoba de Santiago</span>
+          <span> - </span>
           <img
             className={styles.teamLogo}
             src="https://media.api-sports.io/football/teams/450.png"
@@ -57,7 +59,8 @@ const LineUps = () => {
             src="https://media.api-sports.io/football/teams/448.png"
             alt="Colon Santa Fe"
           />
-          <span>Colon Santa Fe - </span>
+          <span>Colon Santa Fe</span>
+          <span> - </span>
           <img
             className={styles.teamLogo}
             src="https://media.api-sports.io/football/teams/439.png"
