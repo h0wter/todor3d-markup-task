@@ -1,6 +1,7 @@
 type Coach = {
+  id: number;
   name: string;
-  imgUrl: string;
+  photo: string;
 };
 
 export { type Coach };

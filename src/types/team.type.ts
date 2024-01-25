@@ -1,12 +1,14 @@
 import { type Coach } from "./coach.type.ts";
-import { type Player } from "./player.type.ts";
+import { type StartPlayer } from "./start-player.type.ts";
+import { type SubstitutePlayer } from "./substitute-player.type.ts";
+import { type TeamInfo } from "./team-info.type.ts";
 
 type Team = {
-  name: string;
+  team: TeamInfo;
   coach: Coach;
-  imgUrl: string;
   formation: string;
-  players: Player[];
+  startXI: StartPlayer[];
+  substitutes: SubstitutePlayer[];
 };
 
 export { type Team };
