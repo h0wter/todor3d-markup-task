@@ -1,6 +1,6 @@
 import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
-import { Team } from "../../../../types";
 import { getValidFormationName } from "../../helpers/get-valid-formation-name.helper.ts";
+import { type Team } from "../../../../types";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -17,9 +17,13 @@ const TeamInfo = ({ team, rightToLeftDirection = false }: Props) => {
       )}
     >
       <div className={styles.logoWrapper}>
-        <img className={styles.teamLogo} src={team.imgUrl} title={team.name} />
+        <img
+          className={styles.teamLogo}
+          src={team.team.logo}
+          title={team.team.name}
+        />
       </div>
-      <p className={styles.teamName}>{team.name}</p>
+      <p className={styles.teamName}>{team.team.name}</p>
       <div className={styles.formationWrapper}>
         <p className={styles.formation}>
           {getValidFormationName(team.formation)}

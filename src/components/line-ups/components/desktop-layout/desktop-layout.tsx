@@ -1,30 +1,37 @@
 import { FootballField } from "../../../football-field/football-field.tsx";
 import { CoachLabel } from "../coach-label/coach-label";
 import { TeamInfo } from "../team-info/team-info.tsx";
-import { teams } from "../../teams.ts";
+import { type CssPosition } from "../../types/css-position.type.ts";
+import { type LineUp } from "../../../../types/line-up.type.ts";
 
 type Props = {
+  lineUp: LineUp;
+  lineUpPositions: {
+    [name: string]: CssPosition;
+  }[];
   styles: CSSModuleClasses;
 };
 
-const DesktopLayout = ({ styles }: Props) => {
+const DesktopLayout = ({ lineUp, lineUpPositions, styles }: Props) => {
+  const [firstTeam, secondTeam] = lineUp;
+
   return (
     <div className={styles.container}>
       <div className={styles.lineUpsWrapper}>
-        <TeamInfo team={teams.firstTeam} />
+        <TeamInfo team={firstTeam} />
         <h2 className={styles.title}>Line-Ups</h2>
-        <TeamInfo team={teams.secondTeam} rightToLeftDirection />
+        <TeamInfo team={secondTeam} rightToLeftDirection />
       </div>
-      <FootballField teams={teams} />
+      <FootballField lineUp={lineUp} lineUpPositions={lineUpPositions} />
       <div className={styles.coachesWrapper}>
         <CoachLabel
-          name={teams.firstTeam.coach.name}
-          imgUrl={teams.firstTeam.coach.imgUrl}
+          name={firstTeam.coach.name}
+          imgUrl={firstTeam.coach.photo}
         />
         <p className={styles.coachLabel}>Coach</p>
         <CoachLabel
-          name={teams.secondTeam.coach.name}
-          imgUrl={teams.secondTeam.coach.imgUrl}
+          name={secondTeam.coach.name}
+          imgUrl={secondTeam.coach.photo}
           rightToLeftDirection
         />
       </div>

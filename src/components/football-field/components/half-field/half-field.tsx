@@ -1,11 +1,13 @@
 import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
-import { formations as rawFormations } from "../../formations.ts";
-import { type Team } from "../../../../types/index.ts";
 import { useDeviceContext } from "../../../../hooks/context/use-device-context.hook.ts";
+import kevinDeBruyneImg from "../../../../assets/images/players/kevin-de-bruyne.png";
+import { type Team } from "../../../../types";
+import { type CssPosition } from "../../../line-ups/types/css-position.type.ts";
 import styles from "./styles.module.scss";
 
 type Props = {
   team: Team;
+  positions: { [name: string]: CssPosition };
   isRight?: boolean;
 };
 
@@ -24,11 +26,10 @@ const getPositionProperty = (
   return "top";
 };
 
-const HalfField = ({ team, isRight = false }: Props) => {
-  const { formation, players } = team;
+const HalfField = ({ team, positions, isRight = false }: Props) => {
   const { isMobile } = useDeviceContext();
 
-  const formations = isMobile ? rawFormations.mobile : rawFormations.desktop;
+  const { startXI: players } = team;
 
   return (
     <div
@@ -45,20 +46,20 @@ const HalfField = ({ team, isRight = false }: Props) => {
         </div>
         <div className={styles.centerCircle}></div>
 
-        {players.map((player, idx) => (
+        {players.map(({ player }, idx) => (
           <img
             key={idx}
             className={styles.player}
-            src={player.imgUrl}
+            src={kevinDeBruyneImg}
             title={player.name}
             {...(isRight && { "data-isright": true })}
             style={{
-              top: formations[formation][idx][
-                getPositionProperty(isMobile, "top")
-              ],
-              left: formations[formation][idx][
-                getPositionProperty(isMobile, "left")
-              ],
+              top: `${
+                positions[player.grid][getPositionProperty(isMobile, "top")]
+              }%`,
+              left: `${
+                positions[player.grid][getPositionProperty(isMobile, "left")]
+              }%`,
             }}
           />
         ))}
