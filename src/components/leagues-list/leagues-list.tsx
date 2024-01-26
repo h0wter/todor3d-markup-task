@@ -5,7 +5,11 @@ import SearchIcon from "../../assets/images/icons/search.svg?react";
 import { getValidClassNames } from "../../helpers/get-valid-class-names.helper.ts";
 import { getCountryLeagues } from "./helpers/get-country-leagues.helper.ts";
 import { getFilteredLeaguesList } from "./helpers/get-filtered-leagues-list.helper.ts";
+import { finalFilteredLeagues } from "./countries.ts";
+import eplLogo from "../../assets/images/icons/epl-logo.png";
 import styles from "./styles.module.scss";
+
+finalFilteredLeagues[0].country.flag = eplLogo;
 
 const LeaguesList = () => {
   const [isAllLeaguesExpanded, setIsAllLeaguesExpanded] = useState(true);
