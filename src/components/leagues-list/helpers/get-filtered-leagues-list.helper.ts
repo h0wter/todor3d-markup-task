@@ -1,7 +1,8 @@
 import { finalFilteredLeagues } from "../countries.ts";
 
 // finalFilteredLeagues[0].country.name = "International";
-finalFilteredLeagues[0].country.flag = "/src/assets/images/icons/epl-logo.png";
+finalFilteredLeagues[0].country.flag =
+  "../../../assets/images/icons/epl-logo.png";
 
 type League = {
   id: number;
