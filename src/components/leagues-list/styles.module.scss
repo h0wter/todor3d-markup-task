@@ -2,7 +2,7 @@
 
 .leaguesListContainer {
   width: 302px;
-  margin-top: 16px;
+  margin: 16px auto 0 auto;
 }
 
 .titleWrapper {
@@ -18,7 +18,6 @@
 
 .inputWrapper {
   position: relative;
-
   margin-bottom: 24px;
 }
 
@@ -27,6 +26,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+  color: $white;
 
   width: 100%;
   padding: 8px 17px 8px 44px;

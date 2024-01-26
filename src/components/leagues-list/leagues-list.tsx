@@ -2,13 +2,10 @@
 import { ChangeEvent, useCallback, useMemo, useState } from "react";
 import CaretRightIcon from "../../assets/images/icons/caret-right.svg?react";
 import SearchIcon from "../../assets/images/icons/search.svg?react";
-import styles from "./styles.module.scss";
-import { finalFilteredLeagues } from "./countries.ts";
 import { getValidClassNames } from "../../helpers/get-valid-class-names.helper.ts";
 import { getCountryLeagues } from "./helpers/get-country-leagues.helper.ts";
-
-finalFilteredLeagues[0].country.name = "International";
-finalFilteredLeagues[0].country.flag = "/src/assets/images/icons/epl-logo.png";
+import { getFilteredLeaguesList } from "./helpers/get-filtered-leagues-list.helper.ts";
+import styles from "./styles.module.scss";
 
 const LeaguesList = () => {
   const [isAllLeaguesExpanded, setIsAllLeaguesExpanded] = useState(true);
@@ -18,10 +15,7 @@ const LeaguesList = () => {
   }>({});
 
   const filteredLeaguesList = useMemo(
-    () =>
-      finalFilteredLeagues.filter((league) =>
-        league.country.name.toLowerCase().includes(filterValue)
-      ),
+    () => getFilteredLeaguesList(filterValue),
     [filterValue]
   );
 
@@ -69,13 +63,22 @@ const LeaguesList = () => {
           </div>
           <div className={styles.leaguesListWrapper}>
             <ul className={styles.leaguesList}>
-              {filteredLeaguesList.map(({ country }) => {
-                const { name, flag } = country;
+              {filteredLeaguesList.map((item) => {
+                let name, flag, isCountry;
+
+                if ("country" in item) {
+                  isCountry = true;
+                  name = item.country.name;
+                  flag = item.country.flag;
+                } else {
+                  name = item.name;
+                  flag = item.logo;
+                }
 
                 return (
                   <li
                     className={styles.leagueItem}
-                    key={name}
+                    key={name + flag}
                     onClick={handleLeagueToggle(name)}
                   >
                     <div className={styles.leagueLabelWrapper}>
@@ -94,12 +97,14 @@ const LeaguesList = () => {
                       >
                         {name}
                       </p>
-                      <CaretRightIcon
-                        className={getValidClassNames(
-                          styles.caretIcon,
-                          !expandedLeagues[name] && styles.expandedIcon
-                        )}
-                      />
+                      {isCountry && (
+                        <CaretRightIcon
+                          className={getValidClassNames(
+                            styles.caretIcon,
+                            !expandedLeagues[name] && styles.expandedIcon
+                          )}
+                        />
+                      )}
                     </div>
                     {expandedLeagues[name] && (
                       <ul className={styles.expandedList}>
