@@ -17,6 +17,9 @@ const TogglePage = ({ onPageChange }: Props) => {
         <button className={styles.button} onClick={onPageChange("list")}>
           List
         </button>
+        <button className={styles.button} onClick={onPageChange("calendar")}>
+          Calendar
+        </button>
       </div>
     </div>
   );

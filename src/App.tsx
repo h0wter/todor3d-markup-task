@@ -3,7 +3,8 @@ import debounce from "lodash.debounce";
 import { LineUps } from "./components/line-ups/line-ups.tsx";
 import { TogglePage } from "./components/toggle-page/toggle-page.tsx";
 import { LeaguesList } from "./components/leagues-list/leagues-list.tsx";
-import { Page } from "./types";
+import { Calendar } from "./components/calendar/calendar.tsx";
+import { type Page } from "./types";
 
 const DESKTOP_WIDTH = 768;
 
@@ -18,6 +19,12 @@ const initialContext = {
 const DeviceContext = createContext<DeviceContext>(initialContext);
 
 const checkIsMobile = (width: number): boolean => width <= DESKTOP_WIDTH;
+
+const pageMap: Record<Page, React.ReactNode> = {
+  field: <LineUps />,
+  list: <LeaguesList />,
+  calendar: <Calendar />,
+};
 
 function App() {
   const [isMobile, setIsMobile] = useState(checkIsMobile(window.innerWidth));
@@ -45,7 +52,8 @@ function App() {
       }}
     >
       <TogglePage onPageChange={handlePageChange} />
-      {activePage === "field" ? <LineUps /> : <LeaguesList />}
+      {/* {activePage === "field" ? <LineUps /> : <LeaguesList />} */}
+      {pageMap[activePage]}
     </DeviceContext.Provider>
   );
 }
