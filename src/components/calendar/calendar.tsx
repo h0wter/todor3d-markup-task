@@ -1,5 +1,7 @@
+import { Slider } from "./components/slider/slider.tsx";
+
 const Calendar = () => {
-  return <p>calendar</p>;
+  return <Slider />;
 };
 
 export { Calendar };

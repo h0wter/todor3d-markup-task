@@ -1,0 +1,152 @@
+@import "src/assets/css/vars.scss";
+
+.calendarContainer {
+  width: 628px;
+  padding: 16px;
+  background-color: $background;
+  border-radius: 8px;
+}
+
+.sliderWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding-inline: 66px;
+}
+
+.buttonPrev,
+.buttonNext {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+
+  background-color: transparent;
+
+  border: 1px solid $stroke;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($white, 0.05);
+  }
+}
+
+.buttonPrev {
+  left: 0;
+}
+
+.buttonNext {
+  right: 0;
+}
+
+.buttonIconPrev {
+  transform: rotate(-90deg);
+}
+
+.buttonIconNext {
+  transform: rotate(90deg);
+}
+
+.sliderWrapper :global {
+  .swiper-wrapper {
+    min-height: 80px;
+    align-items: flex-end;
+  }
+
+  .swiper-slide div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    height: 40px;
+
+    font-size: 14px;
+    line-height: 1.57;
+    white-space: nowrap;
+
+    background-color: $black;
+    border-radius: 8px;
+
+    transition: height 0.5s ease;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($white, 0.05);
+    }
+  }
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 80px;
+    height: 80px;
+  }
+
+  .swiper-slide div {
+    margin-top: auto;
+  }
+
+  .swiper-slide-active div {
+    // height: 56px !important;
+    background-color: rgba($purple, 0.5);
+    border: 1px solid $purple;
+
+    &:hover {
+      background-color: rgba($purple, 0.75);
+    }
+  }
+}
+
+.otherDayCard {
+  height: 56px !important;
+}
+
+.todayCard {
+  height: 80px !important;
+}
+
+.matchesCount {
+  opacity: 1;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.16667;
+  color: $white-main;
+
+  transition: opacity 0.5s ease-in;
+}
+
+.backTodayButton {
+  margin-bottom: 4px;
+  padding: 3px 11px;
+
+  color: $white;
+  font-size: 12px;
+  line-height: 1.16667;
+  white-space: nowrap;
+
+  background-color: $black;
+  border: 1px solid $stroke;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($white, 0.05);
+  }
+}
+
+.hidden {
+  opacity: 0;
+}

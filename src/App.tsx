@@ -28,7 +28,7 @@ const pageMap: Record<Page, React.ReactNode> = {
 
 function App() {
   const [isMobile, setIsMobile] = useState(checkIsMobile(window.innerWidth));
-  const [activePage, setActivePage] = useState<Page>("field");
+  const [activePage, setActivePage] = useState<Page>("calendar");
 
   useEffect(() => {
     const handleResize = debounce(
@@ -52,7 +52,6 @@ function App() {
       }}
     >
       <TogglePage onPageChange={handlePageChange} />
-      {/* {activePage === "field" ? <LineUps /> : <LeaguesList />} */}
       {pageMap[activePage]}
     </DeviceContext.Provider>
   );
