@@ -1,33 +1,28 @@
-import { useState } from "react";
-import Calendar from "react-nice-calendar";
-import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
+import Calendar from "react-calendar";
+import { getFormatterMonthYear } from "./helpers/get-formatted-month-year.helper.ts";
+import { DateValue } from "../../types/date-value.type.ts";
 import styles from "./styles.module.scss";
 
-const DatePicker = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | Date[] | null>();
-  console.log(selectedDate);
+type Props = {
+  selectedDate: DateValue;
+  setSelectedDate: React.Dispatch<React.SetStateAction<DateValue>>;
+};
+
+const DatePicker = ({ selectedDate, setSelectedDate }: Props) => {
   return (
-    <Calendar
-      startDate={new Date()}
-      selectedDate={selectedDate}
-      daysDictionary={["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Say"]}
-      onChangeSelectedDate={setSelectedDate}
-      classNames={{
-        Container: styles.calendarContainer,
-        Header: styles.header,
-        HeaderText: styles.headerText,
-        PrevButton: styles.button,
-        NextButton: getValidClassNames(styles.button, styles.nextButton),
-        Days: styles.days,
-        Day: styles.day,
-        DayCell: styles.dayCell,
-        Cells: styles.cells,
-        CurrentDay: styles.test,
-        SelectedDate: styles.selectedDay,
-        DayBelongCurrentMonth: styles.currentMothDay,
-        // DayBelongCurrentMonth: styles.test,
-      }}
-    />
+    <div className={styles.calendarContainer}>
+      <Calendar
+        value={selectedDate}
+        locale="en-US"
+        calendarType="iso8601"
+        minDetail="decade"
+        prev2Label={null}
+        next2Label={null}
+        showNeighboringMonth={false}
+        formatMonthYear={getFormatterMonthYear}
+        onChange={setSelectedDate}
+      />
+    </div>
   );
 };
 

@@ -11,107 +11,119 @@
   background-color: $dark;
 }
 
-.header {
-  position: relative;
-  display: flex;
-  align-items: center;
+:global {
+  //DAYS VIEW
+  .react-calendar__navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
 
-  padding-bottom: 16px;
-  border-bottom: 1px solid $stroke;
-}
-
-.headerText {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.16667;
-  color: $text-main;
-
-  background-color: transparent;
-  border: none;
-
-  cursor: pointer;
-}
-
-.button {
-  position: absolute;
-
-  right: 32px;
-
-  width: 24px;
-  height: 24px;
-
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="7" height="12" viewBox="0 0 7 12" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.35355 11.3536C6.15829 11.5488 5.84171 11.5488 5.64645 11.3536L0.646447 6.35355C0.451185 6.15829 0.451185 5.84171 0.646447 5.64645L5.64645 0.646446C5.84171 0.451184 6.15829 0.451184 6.35355 0.646446C6.54882 0.841709 6.54882 1.15829 6.35355 1.35355L1.70711 6L6.35355 10.6464C6.54882 10.8417 6.54882 11.1583 6.35355 11.3536Z" fill="%23F5F5F6" fill-opacity="0.87"/></svg>');
-  background-size: 10px 14px;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  background-color: transparent;
-  border: none;
-  border-radius: 8px;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba($white, 0.1);
+    padding-bottom: 16px;
+    border-bottom: 1px solid $stroke;
   }
-}
 
-.nextButton {
-  right: 0;
-  transform: rotate(180deg);
-}
+  .react-calendar__navigation__label {
+    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.16667;
+    color: $text-main;
 
-.days {
-  display: flex;
-  //   justify-content: space-between;
+    background-color: transparent;
+    border: none;
 
-  margin-top: 8px;
-}
+    cursor: pointer;
+  }
 
-.day {
-  width: calc(288px / 7);
-  height: 40px;
+  .react-calendar__navigation__arrow {
+    position: absolute;
+    right: 32px;
 
-  text-align: center;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 40px;
-  color: $text-main;
-}
+    width: 24px;
+    height: 24px;
 
-.cells {
-  display: flex;
-  flex-wrap: wrap;
-}
+    color: transparent;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="7" height="12" viewBox="0 0 7 12" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.35355 11.3536C6.15829 11.5488 5.84171 11.5488 5.64645 11.3536L0.646447 6.35355C0.451185 6.15829 0.451185 5.84171 0.646447 5.64645L5.64645 0.646446C5.84171 0.451184 6.15829 0.451184 6.35355 0.646446C6.54882 0.841709 6.54882 1.15829 6.35355 1.35355L1.70711 6L6.35355 10.6464C6.54882 10.8417 6.54882 11.1583 6.35355 11.3536Z" fill="%23F5F5F6" fill-opacity="0.87"/></svg>');
+    background-size: 10px 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
 
-.dayCell {
-  width: calc(288px / 7);
-  height: 40px;
+    border: none;
+    border-radius: 8px;
 
-  font-size: 14px;
-  line-height: 1.57143;
-  color: $white-main;
+    cursor: pointer;
 
-  background-color: transparent;
-  border: none;
+    &:hover {
+      background-color: rgba($white, 0.1);
+    }
+  }
 
-  cursor: pointer;
-}
+  .react-calendar__navigation__next-button {
+    right: 0;
+    transform: rotate(180deg);
+  }
 
-.currentDay,
-.selectedDay {
-  border: 1px solid $purple;
-  border-radius: 4px;
-}
+  .react-calendar__month-view__weekdays__weekday {
+    width: calc(288px / 7);
+    height: 40px;
 
-.selectedDay {
-  font-size: 16px;
-  line-height: 24px;
-  color: $text-main;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 40px;
+    color: $text-main;
+  }
 
-  background-color: rgba($purple, 0.5);
-}
+  .react-calendar__month-view__weekdays__weekday abbr[title] {
+    text-decoration: none;
+  }
 
-.test {
-  background-color: teal;
+  .react-calendar__tile {
+    height: 40px;
+
+    font-size: 14px;
+    line-height: 1.57143;
+    color: $white-main;
+
+    background-color: transparent;
+    border: transparent;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .react-calendar__tile--active {
+    font-size: 16px;
+    line-height: 24px;
+    color: $text-main;
+
+    background-color: rgba($purple, 0.5);
+  }
+
+  //MONTH VIEW
+  .react-calendar__year-view__months {
+    margin-top: 8px;
+  }
+
+  //COMMON STYLES
+  .react-calendar__tile:hover {
+    border-radius: 4px;
+    background-color: rgba($white, 0.05);
+  }
+
+  .react-calendar__tile--now,
+  .react-calendar__tile--active {
+    border: 1px solid $purple;
+    border-radius: 4px;
+  }
+
+  .react-calendar__tile--now:hover {
+    background-color: transparent;
+  }
+
+  .react-calendar__tile--active:hover {
+    background-color: rgba($purple, 0.5);
+  }
 }
