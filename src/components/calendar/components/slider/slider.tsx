@@ -41,11 +41,7 @@ const Slider = () => {
     const prevDateIdx = slides.findIndex((item) =>
       compareDates(previousDate.toDate(), item.date)
     );
-    console.log({
-      prevDateIdx,
-      selectedDateIndex,
-      activeIndex: swiperInstance.activeIndex,
-    });
+
     swiperInstance?.slideTo(prevDateIdx, 0);
     setTimeout(() => swiperInstance.slideTo(selectedDateIndex), 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
