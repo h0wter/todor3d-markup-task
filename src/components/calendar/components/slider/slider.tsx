@@ -1,44 +1,90 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel } from "swiper/modules";
+import dayjs from "dayjs";
+import { Slide } from "./components/slide.tsx";
 import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
 import CaretRightIcon from "../../../../assets/images/icons/caret-right.svg?react";
 import { type Swiper as SwiperT } from "swiper/types";
+import { useGetSlides } from "./hooks/use-get-slides.hook.ts";
 import styles from "./styles.module.scss";
-
 import "swiper/scss";
+import { compareDates } from "./helpers/compare-dates.helper.ts";
 
-const sliderArray = [
-  "03 Apr",
-  "02 Apr",
-  "02 Apr",
-  "05 Apr",
-  "02 Apr",
-  "02 Apr",
-  "02 Apr",
-];
-
-const TODAY_INDEX = 3;
-
-const generateRandomMatchesNumber = () => Math.ceil(Math.random() * 30);
+const SLIDES_PER_VIEW = 5;
+const TODAY_DATE = new Date();
 
 const Slider = () => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperT>();
 
-  const handleSlideChangeButtonClick = useCallback(
-    (direction: "prev" | "next") => () => {
-      if (direction === "prev") {
-        swiperInstance?.slidePrev();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const dateFromUrl = searchParams.get("date") || TODAY_DATE;
+
+  const {
+    slides,
+    todaySlideId,
+    todaySlideIndex,
+    previousDates,
+    selectedDateIndex,
+  } = useGetSlides(SLIDES_PER_VIEW, dateFromUrl);
+
+  useEffect(() => {
+    if (!swiperInstance || swiperInstance.destroyed) {
+      return;
+    }
+    const previousDate = dayjs(
+      previousDates.length > 1
+        ? previousDates[previousDates.length - 2]
+        : previousDates[0]
+    );
+    const prevDateIdx = slides.findIndex((item) =>
+      compareDates(previousDate.toDate(), item.date)
+    );
+    console.log({
+      prevDateIdx,
+      selectedDateIndex,
+      activeIndex: swiperInstance.activeIndex,
+    });
+    swiperInstance?.slideTo(prevDateIdx, 0);
+    setTimeout(() => swiperInstance.slideTo(selectedDateIndex), 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previousDates, slides, swiperInstance]);
+
+  const setDateSearchParam = useCallback(
+    (slideIndex: number) => {
+      const date = slides[slideIndex].date;
+      const formattedDate = dayjs(date).format("MM-DD-YY");
+      if (!compareDates(date, new Date())) {
+        setSearchParams({ date: formattedDate });
       } else {
-        swiperInstance?.slideNext();
+        setSearchParams();
       }
     },
-    [swiperInstance]
+    [setSearchParams, slides]
+  );
+
+  const handleSlideChangeButtonClick = useCallback(
+    (direction: "prev" | "next") => async () => {
+      if (direction === "prev") {
+        setDateSearchParam(selectedDateIndex - 1);
+      } else {
+        setDateSearchParam(selectedDateIndex + 1);
+      }
+    },
+    [selectedDateIndex, setDateSearchParam]
+  );
+
+  const handleSlideClick = useCallback(
+    (slideIndex: number) => () => {
+      setDateSearchParam(slideIndex);
+    },
+    [setDateSearchParam]
   );
 
   const handleBackTodayButtonClick = useCallback(() => {
-    swiperInstance?.slideTo(TODAY_INDEX, 500);
-  }, [swiperInstance]);
+    swiperInstance?.slideTo(todaySlideIndex, 500);
+  }, [swiperInstance, todaySlideIndex]);
 
   return (
     <div className={styles.calendarContainer}>
@@ -55,45 +101,22 @@ const Slider = () => {
           />
         </button>
         <Swiper
-          modules={[Mousewheel]}
-          initialSlide={TODAY_INDEX}
-          slidesPerView={5}
+          initialSlide={todaySlideIndex}
+          slidesPerView={SLIDES_PER_VIEW}
           centeredSlides
           spaceBetween={16}
-          slideToClickedSlide
-          mousewheel
           onSwiper={setSwiperInstance}
         >
-          {sliderArray.map((item, idx) => (
-            <SwiperSlide key={idx}>
+          {slides.map((item, index) => (
+            <SwiperSlide key={item.id} onClick={handleSlideClick(index)}>
               {({ isActive }) => {
                 return (
-                  <>
-                    {isActive && TODAY_INDEX !== idx && (
-                      <button
-                        className={styles.backTodayButton}
-                        onClick={handleBackTodayButtonClick}
-                      >
-                        Back today
-                      </button>
-                    )}
-                    <div
-                      className={getValidClassNames(
-                        TODAY_INDEX === idx && isActive && styles.todayCard,
-                        isActive && styles.otherDayCard
-                      )}
-                    >
-                      <span>{item}</span>
-                      <span
-                        className={getValidClassNames(
-                          styles.matchesCount,
-                          !isActive && styles.hidden
-                        )}
-                      >
-                        {isActive && generateRandomMatchesNumber() + " games"}
-                      </span>
-                    </div>
-                  </>
+                  <Slide
+                    slideInfo={item}
+                    isActive={isActive}
+                    isTodaySlide={item.id === todaySlideId}
+                    onClick={handleBackTodayButtonClick}
+                  />
                 );
               }}
             </SwiperSlide>

@@ -1,0 +1,43 @@
+@import "src/assets/css/vars.scss";
+
+.matchesCount {
+  opacity: 1;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.16667;
+  color: $white-main;
+
+  transition: opacity 0.5s ease-in;
+}
+
+.backTodayButton {
+  margin-bottom: 4px;
+  padding: 3px 11px;
+
+  color: $white;
+  font-size: 12px;
+  line-height: 1.16667;
+  white-space: nowrap;
+
+  background-color: $black;
+  border: 1px solid $stroke;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($white, 0.05);
+  }
+}
+
+.otherDayCard {
+  height: 56px !important;
+}
+
+.todayCard {
+  height: 80px !important;
+}
+
+.hidden {
+  opacity: 0;
+}
