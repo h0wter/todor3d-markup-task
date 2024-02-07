@@ -127,3 +127,34 @@
     background-color: rgba($purple, 0.5);
   }
 }
+
+.datePickerButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 284px;
+  padding: 8px 16px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: $white-main;
+
+  background-color: transparent;
+  border: 1px solid $stroke;
+  border-radius: 24px;
+
+  cursor: pointer;
+}
+
+.buttonLabelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.buttonActive {
+  color: $text-main;
+  transform: rotate(180deg);
+}
