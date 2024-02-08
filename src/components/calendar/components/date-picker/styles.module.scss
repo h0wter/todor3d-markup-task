@@ -12,32 +12,18 @@
 }
 
 :global {
-  //DAYS VIEW
-  .react-calendar__navigation {
+  .react-datepicker {
     position: relative;
-    display: flex;
-    align-items: center;
-
-    padding-bottom: 16px;
-    border-bottom: 1px solid $stroke;
   }
 
-  .react-calendar__navigation__label {
-    text-align: left;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.16667;
-    color: $text-main;
-
-    background-color: transparent;
-    border: none;
-
-    cursor: pointer;
+  .react-datepicker__aria-live {
+    display: none;
   }
 
-  .react-calendar__navigation__arrow {
+  .react-datepicker__navigation {
     position: absolute;
     right: 32px;
+    z-index: 1;
 
     width: 24px;
     height: 24px;
@@ -59,12 +45,42 @@
     }
   }
 
-  .react-calendar__navigation__next-button {
+  .react-datepicker__navigation span {
+    visibility: hidden;
+  }
+
+  .react-datepicker__navigation--next {
     right: 0;
     transform: rotate(180deg);
   }
 
-  .react-calendar__month-view__weekdays__weekday {
+  .react-datepicker__month-container {
+    background-color: transparent;
+  }
+
+  .react-datepicker__day--outside-month {
+    visibility: hidden;
+  }
+
+  .react-datepicker__current-month {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.16667;
+    color: $text-main;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $stroke;
+  }
+
+  .react-datepicker__day-names {
+    display: flex;
+  }
+
+  .react-datepicker__day-name {
     width: calc(288px / 7);
     height: 40px;
 
@@ -75,12 +91,17 @@
     color: $text-main;
   }
 
-  .react-calendar__month-view__weekdays__weekday abbr[title] {
-    text-decoration: none;
+  .react-datepicker__week {
+    display: flex;
   }
 
-  .react-calendar__tile {
+  .react-datepicker__day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     height: 40px;
+    width: calc(288px / 7);
 
     font-size: 14px;
     line-height: 1.57143;
@@ -88,43 +109,35 @@
 
     background-color: transparent;
     border: transparent;
+    border-radius: 4px;
 
     cursor: pointer;
 
     transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba($white, 0.05);
+    }
   }
 
-  .react-calendar__tile--active {
+  .react-datepicker__day--today {
+    border: 1px solid $purple;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .react-datepicker__day--selected {
     font-size: 16px;
     line-height: 24px;
     color: $text-main;
 
     background-color: rgba($purple, 0.5);
-  }
 
-  //MONTH VIEW
-  .react-calendar__year-view__months {
-    margin-top: 8px;
-  }
-
-  //COMMON STYLES
-  .react-calendar__tile:hover {
-    border-radius: 4px;
-    background-color: rgba($white, 0.05);
-  }
-
-  .react-calendar__tile--now,
-  .react-calendar__tile--active {
-    border: 1px solid $purple;
-    border-radius: 4px;
-  }
-
-  .react-calendar__tile--now:hover {
-    background-color: transparent;
-  }
-
-  .react-calendar__tile--active:hover {
-    background-color: rgba($purple, 0.5);
+    &:hover {
+      background-color: rgba($purple, 0.5);
+    }
   }
 }
 

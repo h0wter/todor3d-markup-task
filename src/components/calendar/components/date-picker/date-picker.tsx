@@ -1,14 +1,13 @@
 import { useCallback, useState } from "react";
-import Calendar from "react-calendar";
 import dayjs from "dayjs";
+import Picker from "react-datepicker";
+import enGB from "date-fns/locale/en-GB";
 import { useSearchParams } from "react-router-dom";
 import CaretRightIcon from "../../../../assets/images/icons/caret-right.svg?react";
 import CalendarIcon from "../../../../assets/images/icons/calendar.svg?react";
-import { getFormatterMonthYear } from "./helpers/get-formatted-month-year.helper.ts";
 import { getValidClassNames } from "../../../../helpers/get-valid-class-names.helper.ts";
-import { type DateValue } from "../../types/date-value.type.ts";
-import styles from "./styles.module.scss";
 import { compareDates } from "../slider/helpers/compare-dates.helper.ts";
+import styles from "./styles.module.scss";
 
 const DatePicker = () => {
   const [isDatePickedOpened, setIsDatePickedOpened] = useState(true);
@@ -23,9 +22,7 @@ const DatePicker = () => {
   );
 
   const handleDataChange = useCallback(
-    (dateValue: DateValue) => {
-      const date = Array.isArray(dateValue) ? dateValue[0] : dateValue;
-
+    (date: Date) => {
       const formattedDate = dayjs(date).format("MM-DD-YY");
 
       if (date && !compareDates(date, new Date())) {
@@ -55,15 +52,11 @@ const DatePicker = () => {
       </button>
       {isDatePickedOpened && (
         <div className={styles.calendarContainer}>
-          <Calendar
-            value={decodedDate}
-            locale="en-US"
-            calendarType="iso8601"
-            minDetail="decade"
-            prev2Label={null}
-            next2Label={null}
-            showNeighboringMonth={false}
-            formatMonthYear={getFormatterMonthYear}
+          <Picker
+            inline
+            selected={decodedDate}
+            useWeekdaysShort
+            locale={enGB}
             onChange={handleDataChange}
           />
         </div>
