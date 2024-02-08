@@ -51,7 +51,7 @@ function App() {
         isMobile,
       }}
     >
-      <TogglePage onPageChange={handlePageChange} />
+      <TogglePage activePage={activePage} onPageChange={handlePageChange} />
       {pageMap[activePage]}
     </DeviceContext.Provider>
   );
