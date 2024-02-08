@@ -79,8 +79,8 @@ const Slider = () => {
   );
 
   const handleBackTodayButtonClick = useCallback(() => {
-    swiperInstance?.slideTo(todaySlideIndex, 500);
-  }, [swiperInstance, todaySlideIndex]);
+    setSearchParams({});
+  }, [setSearchParams]);
 
   return (
     <div className={styles.calendarContainer}>
@@ -104,14 +104,15 @@ const Slider = () => {
           onSwiper={setSwiperInstance}
         >
           {slides.map((item, index) => (
-            <SwiperSlide key={item.id} onClick={handleSlideClick(index)}>
+            <SwiperSlide key={item.id}>
               {({ isActive }) => {
                 return (
                   <Slide
                     slideInfo={item}
                     isActive={isActive}
                     isTodaySlide={item.id === todaySlideId}
-                    onClick={handleBackTodayButtonClick}
+                    onSlideClick={handleSlideClick(index)}
+                    onClickBackTodayButtonClick={handleBackTodayButtonClick}
                   />
                 );
               }}

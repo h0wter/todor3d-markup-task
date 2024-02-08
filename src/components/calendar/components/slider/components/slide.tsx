@@ -6,14 +6,24 @@ type Props = {
   slideInfo: SlideInfo;
   isActive: boolean;
   isTodaySlide: boolean;
-  onClick: () => void;
+  onSlideClick: () => void;
+  onClickBackTodayButtonClick: () => void;
 };
 
-const Slide = ({ slideInfo, isActive, isTodaySlide, onClick }: Props) => {
+const Slide = ({
+  slideInfo,
+  isActive,
+  isTodaySlide,
+  onSlideClick,
+  onClickBackTodayButtonClick,
+}: Props) => {
   return (
     <>
       {isActive && !isTodaySlide && (
-        <button className={styles.backTodayButton} onClick={onClick}>
+        <button
+          className={styles.backTodayButton}
+          onClick={onClickBackTodayButtonClick}
+        >
           Back today
         </button>
       )}
@@ -22,6 +32,7 @@ const Slide = ({ slideInfo, isActive, isTodaySlide, onClick }: Props) => {
           isTodaySlide && isActive && styles.todayCard,
           isActive && styles.otherDayCard
         )}
+        onClick={onSlideClick}
       >
         <span>{slideInfo.title}</span>
         <span
