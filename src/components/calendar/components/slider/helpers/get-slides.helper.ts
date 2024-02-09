@@ -5,6 +5,7 @@ import { type SlideInfo } from "../types/slide-info.type.ts";
 
 const ADDITIONAL_SLIDES_PER_SIDE = 3;
 const ADDITIONAL_SLIDES_TOTAL = ADDITIONAL_SLIDES_PER_SIDE * 2;
+const UPDATED_SLIDES_MULTIPLIER = 10;
 
 const getFormattedDate = (date: Date) => {
   const rawDate = new Intl.DateTimeFormat("en-US", {
@@ -92,11 +93,13 @@ const getUpdatedSlides = (
   const direction = dayDifference > 0 ? "forward" : "backward";
   const isDirectionForward = direction === "forward";
   const difference = Math.abs(dayDifference) - numberOfDaysAlreadyExist;
-  const numberOfDaysToCreate = dayDifference > 0 ? difference + 1 : difference;
+  let numberOfDaysToCreate = dayDifference > 0 ? difference + 1 : difference;
+  numberOfDaysToCreate +=
+    ADDITIONAL_SLIDES_PER_SIDE * UPDATED_SLIDES_MULTIPLIER;
 
   const createdSlides = [];
 
-  for (let i = 1; i <= numberOfDaysToCreate + ADDITIONAL_SLIDES_PER_SIDE; i++) {
+  for (let i = 1; i <= numberOfDaysToCreate; i++) {
     const step = isDirectionForward ? i : -i;
     const createdDate = edgeDay.add(step, "day").toDate();
     const formattedDate = getFormattedDate(createdDate);

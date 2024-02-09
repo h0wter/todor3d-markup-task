@@ -1,7 +1,7 @@
 import { MouseEventHandler } from "react";
 import { Page } from "../../types";
+import { getValidClassNames } from "../../helpers/get-valid-class-names.helper.ts";
 import styles from "./styles.module.scss";
-import { getValidClassNames } from "../../helpers/get-valid-class-names.helper";
 
 type Props = {
   activePage: Page;
@@ -25,8 +25,9 @@ const TogglePage = ({ activePage, onPageChange }: Props) => {
     <div className={styles.togglePageContainer}>
       <p>Switch Page:</p>
       <div className={styles.buttonsContainer}>
-        {pagesArray.map((page) => (
+        {pagesArray.map((page, idx) => (
           <button
+            key={idx}
             className={getValidClassNames(
               styles.button,
               activePage === page.name && styles.activePage
