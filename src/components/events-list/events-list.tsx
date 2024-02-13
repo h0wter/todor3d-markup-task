@@ -65,10 +65,12 @@ const EventsList = () => {
                 >
                   <div className={styles.eventTitleWrapper}>
                     {iconNameToSvg[type as ValueOf<typeof IconName>]}
-                    <p>
-                      <span className={styles.firstName}>{firstName}</span>{" "}
-                      <span className={styles.lastName}>{lastName}</span>
-                    </p>
+                    {mainName && (
+                      <p>
+                        <span className={styles.firstName}>{firstName}</span>{" "}
+                        <span className={styles.lastName}>{lastName}</span>
+                      </p>
+                    )}
                     {!mainName && <p className={styles.firstName}>{type}</p>}
                   </div>
                   <p className={styles.secondName}>{secondName}</p>
