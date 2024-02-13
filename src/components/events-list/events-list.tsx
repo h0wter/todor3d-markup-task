@@ -9,40 +9,45 @@ import styles from "./styles.module.scss";
 const DESKTOP_BREAKPOINT = 780;
 const MAX_LIST_ELEMENTS_MOBILE = 5;
 const MAX_LIST_ELEMENTS_DESKTOP = 3;
+const FOLDED_LIST_MAX_HEIGHT_MOBILE = 452;
+const FOLDED_LIST_MAX_HEIGHT_DESKTOP = 276;
 
 const EventsList = () => {
-  const [events, setEvents] = useState(eventsList);
   const [listMaxHeight, setListMaxHeight] = useState<number>();
   const [isListOpened, setIsListOpened] = useState<boolean | null>(null);
   const container = useRef<HTMLUListElement>(null);
 
-  const maxListElements = useMemo(() => {
+  const { maxListElements, foldedListMaxHeight } = useMemo(() => {
     if (container.current) {
-      return container.current.offsetWidth > DESKTOP_BREAKPOINT
+      const isDesktop = container.current.offsetWidth > DESKTOP_BREAKPOINT;
+      const maxListElements = isDesktop
         ? MAX_LIST_ELEMENTS_DESKTOP
         : MAX_LIST_ELEMENTS_MOBILE;
+      const foldedListMaxHeight = isDesktop
+        ? FOLDED_LIST_MAX_HEIGHT_DESKTOP
+        : FOLDED_LIST_MAX_HEIGHT_MOBILE;
+      return {
+        maxListElements,
+        foldedListMaxHeight,
+      };
     } else {
-      return eventsList.length;
+      return {
+        maxListElements: eventsList.length,
+        foldedListMaxHeight: FOLDED_LIST_MAX_HEIGHT_DESKTOP,
+      };
     }
   }, []);
-
-  // const foldedList = useMemo(
-  //   () => eventsList.slice(0, maxListElements),
-  //   [maxListElements]
-  // );
 
   useEffect(() => {
     if (container.current) {
       const isListOpened = eventsList.length < maxListElements;
       setListMaxHeight(container.current?.scrollHeight);
       setIsListOpened(isListOpened);
-      // setEvents(eventsList.slice(0, maxListElements));
     }
   }, [maxListElements]);
 
   const handleToggleOpenListBtnClick = useCallback(() => {
     setIsListOpened((prevState) => !prevState);
-    // setEvents(eventsList);
   }, []);
 
   return (
@@ -50,10 +55,12 @@ const EventsList = () => {
       <h2 className={styles.title}>Events</h2>
       <ul
         className={styles.list}
-        style={{ maxHeight: isListOpened ? listMaxHeight : 480 }}
+        style={{
+          maxHeight: isListOpened ? listMaxHeight : foldedListMaxHeight,
+        }}
         ref={container}
       >
-        {events.map((event, idx) => {
+        {eventsList.map((event, idx) => {
           const { time, mainName, secondName, type, team } = event;
           let firstName;
           let lastName;
