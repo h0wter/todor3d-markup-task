@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { IconName } from "../../enums";
 import { getValidClassNames } from "../../helpers/get-valid-class-names.helper.ts";
 import { type ValueOf } from "../../types";
@@ -12,35 +12,45 @@ const MAX_LIST_ELEMENTS_DESKTOP = 3;
 
 const EventsList = () => {
   const [events, setEvents] = useState(eventsList);
+  const [listMaxHeight, setListMaxHeight] = useState<number>();
   const [isListOpened, setIsListOpened] = useState<boolean | null>(null);
   const container = useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
+  const maxListElements = useMemo(() => {
     if (container.current) {
-      const maxListElements =
-        container.current.offsetWidth > DESKTOP_BREAKPOINT
-          ? MAX_LIST_ELEMENTS_DESKTOP
-          : MAX_LIST_ELEMENTS_MOBILE;
-      const isListOpened = eventsList.length < maxListElements;
-      setIsListOpened(isListOpened);
-      setEvents(eventsList.slice(0, maxListElements));
+      return container.current.offsetWidth > DESKTOP_BREAKPOINT
+        ? MAX_LIST_ELEMENTS_DESKTOP
+        : MAX_LIST_ELEMENTS_MOBILE;
+    } else {
+      return eventsList.length;
     }
   }, []);
 
-  const handleOpenListBtnClick = useCallback(() => {
-    setIsListOpened(true);
-    setEvents(eventsList);
+  // const foldedList = useMemo(
+  //   () => eventsList.slice(0, maxListElements),
+  //   [maxListElements]
+  // );
+
+  useEffect(() => {
+    if (container.current) {
+      const isListOpened = eventsList.length < maxListElements;
+      setListMaxHeight(container.current?.scrollHeight);
+      setIsListOpened(isListOpened);
+      // setEvents(eventsList.slice(0, maxListElements));
+    }
+  }, [maxListElements]);
+
+  const handleToggleOpenListBtnClick = useCallback(() => {
+    setIsListOpened((prevState) => !prevState);
+    // setEvents(eventsList);
   }, []);
 
   return (
     <div className={styles.eventsListContainer}>
       <h2 className={styles.title}>Events</h2>
       <ul
-        className={getValidClassNames(
-          styles.list,
-          isListOpened && styles.listFullHeight,
-          !isListOpened && styles.listHidden
-        )}
+        className={styles.list}
+        style={{ maxHeight: isListOpened ? listMaxHeight : 480 }}
         ref={container}
       >
         {events.map((event, idx) => {
@@ -80,11 +90,12 @@ const EventsList = () => {
           );
         })}
       </ul>
-      {isListOpened === false && (
-        <button className={styles.showAllBtn} onClick={handleOpenListBtnClick}>
-          Show All Match Events
-        </button>
-      )}
+      <button
+        className={styles.showAllBtn}
+        onClick={handleToggleOpenListBtnClick}
+      >
+        {isListOpened ? "Hide All Match Events" : "Show All Match Events"}
+      </button>
     </div>
   );
 };

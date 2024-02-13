@@ -1,6 +1,5 @@
 @import "src/assets/css/vars.scss";
 
-$card-width: 140px;
 $card-height: 80px;
 
 .eventsListContainer {
@@ -16,16 +15,11 @@ $card-height: 80px;
 }
 
 .list {
-  max-height: 480px;
   padding-block: calc($card-height / 2);
   overflow-y: hidden;
   list-style: none;
 
-  transition: max-height 2000ms ease-in-out;
-}
-
-.listFullHeight {
-  max-height: 9999px;
+  transition: max-height 500ms ease-in-out;
 }
 
 .listHidden {
@@ -85,7 +79,6 @@ $card-height: 80px;
   gap: 4px;
   align-items: start;
   justify-content: center;
-  // width: $card-width;
   width: 100%;
   height: $card-height;
   padding: 8px;
@@ -94,8 +87,6 @@ $card-height: 80px;
 
   @media (min-width: $desktop-width) {
     padding: 16px;
-
-    // max-width: 320px;
   }
 }
 
