@@ -1,0 +1,182 @@
+@import "src/assets/css/vars.scss";
+
+$card-width: 140px;
+$card-height: 80px;
+
+.eventsListContainer {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 55px;
+
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.list {
+  max-height: 480px;
+  padding-block: calc($card-height / 2);
+  overflow-y: hidden;
+  list-style: none;
+
+  transition: max-height 2000ms ease-in-out;
+}
+
+.listFullHeight {
+  max-height: 9999px;
+}
+
+.listHidden {
+  &::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 48px;
+    margin-top: 8px;
+    margin-inline: auto;
+    background-color: $stroke;
+  }
+}
+
+.listItem {
+  &:not(:last-child) {
+    margin-bottom: 8px;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 48px;
+      margin-top: 8px;
+      margin-inline: auto;
+      background-color: $stroke;
+    }
+  }
+}
+
+.cardContentWrapper {
+  display: inline-block;
+  position: relative;
+
+  width: 40.8%;
+  max-width: 320px;
+
+  @media (min-width: $desktop-width) {
+    width: 42%;
+  }
+}
+
+.eventTime {
+  display: inline-block;
+
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.eventCard {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: start;
+  justify-content: center;
+  // width: $card-width;
+  width: 100%;
+  height: $card-height;
+  padding: 8px;
+  background-color: $background;
+  border-radius: 8px;
+
+  @media (min-width: $desktop-width) {
+    padding: 16px;
+
+    // max-width: 320px;
+  }
+}
+
+.leftTeam {
+  right: calc(50% + 32px);
+
+  @media (min-width: $desktop-width) {
+    right: calc(50% + 50px);
+  }
+}
+
+.rightTeam {
+  align-items: end;
+  left: calc(50% + 32px);
+
+  @media (min-width: $desktop-width) {
+    left: calc(50% + 50px);
+  }
+}
+
+.eventTitleWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $desktop-width) {
+    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.rightTeam .eventTitleWrapper {
+  align-items: end;
+
+  @media (min-width: $desktop-width) {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+}
+
+.firstName {
+  text-transform: capitalize;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 22px;
+
+  @media (min-width: $desktop-width) {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.lastName {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+
+  @media (min-width: $desktop-width) {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.secondName {
+  font-size: 12px;
+  line-height: 14px;
+  color: $white-main;
+}
+
+.showAllBtn {
+  margin-top: 32px;
+  padding: 12px 24px;
+  background-color: transparent;
+  border-radius: 24px;
+  border: 1px solid $white-main;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($white, 0.1);
+  }
+}

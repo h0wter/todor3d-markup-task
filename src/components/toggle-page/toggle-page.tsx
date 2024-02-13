@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
-import { Page } from "../../types";
 import { getValidClassNames } from "../../helpers/get-valid-class-names.helper.ts";
+import { type Page } from "../../types";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -17,6 +17,9 @@ const pagesArray: { name: Page }[] = [
   },
   {
     name: "calendar",
+  },
+  {
+    name: "events",
   },
 ];
 

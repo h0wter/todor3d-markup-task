@@ -1,3 +1,3 @@
-type Page = "field" | "list" | "calendar";
+type Page = "field" | "list" | "calendar" | "events";
 
 export { type Page };

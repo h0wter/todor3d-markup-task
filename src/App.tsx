@@ -4,6 +4,7 @@ import { LineUps } from "./components/line-ups/line-ups.tsx";
 import { TogglePage } from "./components/toggle-page/toggle-page.tsx";
 import { LeaguesList } from "./components/leagues-list/leagues-list.tsx";
 import { Calendar } from "./components/calendar/calendar.tsx";
+import { EventsList } from "./components/events-list/events-list.tsx";
 import { type Page } from "./types";
 
 const DESKTOP_WIDTH = 768;
@@ -24,11 +25,12 @@ const pageMap: Record<Page, React.ReactNode> = {
   field: <LineUps />,
   list: <LeaguesList />,
   calendar: <Calendar />,
+  events: <EventsList />,
 };
 
 function App() {
   const [isMobile, setIsMobile] = useState(checkIsMobile(window.innerWidth));
-  const [activePage, setActivePage] = useState<Page>("calendar");
+  const [activePage, setActivePage] = useState<Page>("events");
 
   useEffect(() => {
     const handleResize = debounce(

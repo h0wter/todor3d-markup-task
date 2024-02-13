@@ -5,3 +5,4 @@ export { type SubstitutePlayer } from "./substitute-player.type.ts";
 export { type Team } from "./team.type.ts";
 export { type TeamInfo } from "./team-info.type.ts";
 export { type LineUp } from "./line-up.type.ts";
+export { type ValueOf } from "./value-of.type.ts";

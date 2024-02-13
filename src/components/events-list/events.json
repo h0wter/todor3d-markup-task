@@ -1,0 +1,68 @@
+[
+  {
+    "time": 8,
+    "team": "left",
+    "type": "goal",
+    "mainName": "Moussa Diaby",
+    "secondName": "Douglas Luiz (assist)"
+  },
+  {
+    "time": 11,
+    "team": "right",
+    "type": "goal cancelled"
+  },
+  {
+    "time": 15,
+    "team": "left",
+    "type": "goal",
+    "mainName": "Moussa Diaby",
+    "secondName": "Douglas Luiz (assist)"
+  },
+  {
+    "time": 22,
+    "team": "right",
+    "type": "red card",
+    "mainName": "Moussa Diaby"
+  },
+  {
+    "time": 26,
+    "team": "left",
+    "type": "yellow card",
+    "mainName": "Moussa Diaby"
+  },
+  {
+    "time": 35,
+    "team": "right",
+    "type": "substitution",
+    "mainName": "Moussa Diaby",
+    "secondName": "Douglas Luiz (assist)"
+  },
+  {
+    "time": 47,
+    "team": "left",
+    "type": "goal",
+    "mainName": "Moussa Diaby",
+    "secondName": "Douglas Luiz (assist)"
+  },
+  {
+    "time": 56,
+    "team": "right",
+    "type": "goal",
+    "mainName": "Moussa Diaby",
+    "secondName": "Douglas Luiz (assist)"
+  },
+  {
+    "time": 78,
+    "team": "left",
+    "type": "goal",
+    "mainName": "Moussa Diaby",
+    "secondName": "Douglas Luiz (assist)"
+  },
+  {
+    "time": 89,
+    "team": "right",
+    "type": "goal",
+    "mainName": "Moussa Diaby",
+    "secondName": "Douglas Luiz (assist)"
+  }
+]
